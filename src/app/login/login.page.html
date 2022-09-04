@@ -12,19 +12,23 @@
     <ion-card-content>
       <ion-item lines="full">
         <ion-label position="floating">Usuario</ion-label>
-        <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
         <ion-input type="text" [(ngModel)]="user.usuario" minlength="3" maxlength="8"></ion-input>
       </ion-item>
       <ion-item lines="full">
-        <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
         <ion-label position="floating">Password</ion-label>
         <ion-input type="password" [(ngModel)]="user.password" minlength="4" maxlength="4"></ion-input>
       </ion-item>
       <ion-row>
         <ion-col>
-          <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
+         
           <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
         </ion-col>
+
+        <ion-col>
+        
+          <ion-button expand="full" (click)="Restablecer()">Restablecer contraseña</ion-button>
+        </ion-col>
+        
       </ion-row>
     </ion-card-content>
   </ion-card>

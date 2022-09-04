@@ -1,35 +1,27 @@
 /** Importaciones de librerias a usar */
-
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { AnimationController  } from '@ionic/angular';
 
-// Decorador Componente este indica que el Home Page es un Componente
 @Component({
   selector: 'app-home', // Nombre del selector como <input> o <main-page>
   templateUrl: 'home.page.html', // Arhivo HTML de la visual a trabajar
   styleUrls: ['home.page.scss'], // Archivo/s de estilos
 })
+
+
 export class HomePage {
   user:any;
   data: any={
     nombre: "unknown",
-    carrera:"unknown",
-  }; // Generamos una variable Any (permite cualquier valor)
+    carrera:"Ingenieria en informatica",
+  }; 
 
-  /**
-   * En el constructor del HomePage se colocan por parametros
-   * todas aquellas propiedades con el siguiente formato
-   * private = visibilidad
-   * activeRoute = identificador
-   * ActiveRoute = Tipo de Objeto
-   * : Indica que el identificador sera de la clase posterior a los : puntos
-   * 
-   */
-  
+  @ViewChild('squareA', { read: ElementRef, static: true }) squareA: ElementRef;
 
-  constructor(private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menuCTR:MenuController) {
+  constructor(private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menuCTR:MenuController, private animationCtr: AnimationController) {
     // Se llama a la ruta activa y se obtiene sus parametros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
       if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
@@ -39,19 +31,27 @@ export class HomePage {
     });
   }
 
-  limpiar(){
-    for (var[key, value] of Object.entries(this.data)){
-      Object.defineProperty(this.data,key,{value:""})
-    }
-  }
+  ngAfterViewInit() {
+    const squareA = this.animationCtr.create()
+  .addElement(this.squareA.nativeElement)
+  .duration(5000)
+  .keyframes([
+    { offset: 0, transform: 'scale(1))', opacity: '0.5' },
+    { offset: 0.5, transform: 'scale(0.8)', opacity: '1' },
+    { offset: 1, transform: 'scale(1)', opacity: '0.5' }
+  ]);
+      
+      const miAnimacion =  this.animationCtr.create()
+      .duration(4000)
+      .iterations(Infinity)
+      .addAnimation([squareA]);
+    
+      miAnimacion.play()
 
-  mostrar(){
-    if(this.data.nombre!="" && this.data.apellido!=""){
-      this.presentAlert("Usuario", "Su nombre es: "+this.data.nombre+ " " + this.data.apellido)
-    }else{
-      this.presentAlert("Error", "Debe ingresar Nombre y Apellido")
+
     }
-  }
+
+
 
   async presentAlert(title:string, msg:string) {
     const alert = await this.alertController.create({
@@ -63,8 +63,13 @@ export class HomePage {
     await alert.present();
   }
 
-  Onclick() {
+  onClick() {
     this.menuCTR.toggle();
 
   }
+
+
+
+
+  
 }

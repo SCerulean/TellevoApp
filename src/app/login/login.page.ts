@@ -32,8 +32,14 @@ export class LoginPage implements OnInit {
       this.router.navigate(['/home'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
     }else{
       this.presentToast("Falta: "+this.field);
+      
     }
 
+  }
+
+  Restablecer(){
+    this.router.navigate(['/restablecer']);
+    
   }
 
   /**

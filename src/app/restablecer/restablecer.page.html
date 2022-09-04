@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-title>Restablecer contraseña</ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="full">
+        <ion-label position="floating">Ingresar correo</ion-label>
+        <ion-input type="email"  [(ngModel)]="email.correo" maxlength="30"></ion-input>
+        <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
+       
+      </ion-item>
+   
+      
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <ion-button expand="full" (click)="envioEmailRes()" >Enviar correo de Restablecimiento</ion-button>
+  </ion-item>
+</ion-content>
