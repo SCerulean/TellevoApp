@@ -58,13 +58,24 @@ export class RestablecerPage implements OnInit {
 
   async envioEmailRes() {
     const alert = await this.alertCRT.create({
-      message: 'Se ha enviado un correo de restablecimiento',
+      message: 'Se ha enviado un correo de restablecimiento a '+this.email.correo,
       buttons: ['OK'],
     });
 
     await alert.present();
   }
 
+
+  
+  async presentAlert(title:string, msg:string) {
+    const alert = await this.alertCRT.create({
+      header: title,
+      message: msg,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 
   async presentToast(msg: string, duration?: number) {
     const toast = await this.ToastCrt.create({
@@ -73,6 +84,7 @@ export class RestablecerPage implements OnInit {
     });
     toast.present();
   }
+
 
 
   //funcion que hay que comprobar 

@@ -15,21 +15,21 @@ export class LoginPage implements OnInit {
   }
   field: string = "" ;
 
-  constructor(private router: Router, public toastController: ToastController) { } // Se debe instanciar
+  constructor(private router: Router, public toastController: ToastController) { } 
 
   ngOnInit() {
   }
 
   ingresar() {
     if (this.validateModel(this.user)) {
-      this.presentToast("Bienvenido", 3000)
-      // Se declara e instancia un elemento de tipo NavigationExtras
+      this.presentToast("Bienvenido  "+this.user.usuario, 3000)
+      // declaracion de instacia y envio al home
       let navigationExtras: NavigationExtras = {
         state: {
-          user: this.user // Al estado se asignamos un objeto con clave y valor
+          user: this.user 
         }
       };
-      this.router.navigate(['/home'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
+      this.router.navigate(['/home'], navigationExtras); 
     }else{
       this.presentToast("Falta: "+this.field);
       
@@ -41,13 +41,8 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/restablecer']);
     
   }
-
-  /**
-   * validateModel sirve para validar que se ingrese algo en los
-   * campos del html mediante su modelo
-   */
+  //validar campos 
   validateModel(model: any) {
-    // Recorro todas las entradas que me entrega Object entries y obtengo su clave, valor
     for (var [key, value] of Object.entries(model)) {
       //verifico campo vacio
       if (value == "") {
@@ -57,10 +52,11 @@ export class LoginPage implements OnInit {
     }
     return true;
   }
+
   async presentToast(msg: string, duration?: number) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: duration ? duration : 2000 //si no viene el parámetro el tiempo es 2000
+      duration: duration ? duration : 2000 
     });
     toast.present();
   }

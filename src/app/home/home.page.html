@@ -18,21 +18,22 @@
 
 <div>
 <ion-card> 
-  <ion-card-header>
-    <ion-title>BIENVENIDO</ion-title>
-  </ion-card-header>
-  
-  <ion-card-content>
-    <ion-item>
-       <ion-label> {{user.usuario}}</ion-label>
-    </ion-item>
 
-    <ion-item>  
-      <ion-label>Carrera :{{data.carrera}}</ion-label> 
-    </ion-item>
+  <ion-card-header>
+    <ion-card-tittle>BIENVENIDO</ion-card-tittle>
+  </ion-card-header>
+
+  <ion-card-content>
+    
+   <div>
+      <ion-label> {{user.usuario}}</ion-label>
+    </div>
+    <div>
+      <ion-label>Carrera: {{data.carrera}}</ion-label> 
+    </div>
+
   </ion-card-content>
 </ion-card>
-
 </div>
 
 <div>
@@ -41,27 +42,31 @@
       Mis viajes
     </ion-label>
   </ion-item>
-
-  
-<!-- Item as a Button -->
 <ion-card>
   <ion-card-content>
     <ion-item button (click)="buttonClick()">
       <ion-label>
-        Button Item
+        Mi viaje 1 
       </ion-label>
     </ion-item>
-
   </ion-card-content>
 </ion-card>
 </div>
  
 <ion-footer >
-  <ion-toolbar>
-    <ion-button class="square" #squareA>
-      <ion-icon name="search-outline" id="buttonS"></ion-icon>
-    </ion-button>
-    
+  <ion-toolbar id="Fbar">
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-label id="labelFooter" #labelFooter> Buscar viajes</ion-label>
+          <ion-button class="square" #squareA id="Bsearch">
+            <ion-icon name="search-outline" id="buttonS" #buttonS></ion-icon>
+          </ion-button>
+          </div>
+          
+        </ion-col>
+      </ion-row>
   </ion-toolbar>
 </ion-footer>
+
 </ion-content>
