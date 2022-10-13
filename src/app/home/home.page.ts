@@ -21,7 +21,8 @@ export class HomePage {
   @ViewChild('squareA', { read: ElementRef, static: true }) squareA: ElementRef;
   @ViewChild('labelFooter', { read: ElementRef, static: true }) labelFooter: ElementRef;
   @ViewChild('buttonS', { read: ElementRef, static: true }) buttonS: ElementRef;
-  constructor(private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menuCTR:MenuController, private animationCtr: AnimationController) {
+
+  constructor(private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menu:MenuController, private animationCtr: AnimationController) {
    
     this.activeroute.queryParams.subscribe(params => { 
       if (this.router.getCurrentNavigation().extras.state) { 
@@ -50,16 +51,23 @@ export class HomePage {
     
       miAnimacion.play()
 
+
+
     }
 
+    async onclicka() {
+      const alert = await this.alertController.create({
+        header: 'Alert',
+        subHeader: 'Important message',
+        message: 'This is an alert!',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
+    }
 
-  onClick() {
-    this.menuCTR.toggle();
-
-  }
-
-
-
-
+    async onclick(){
+      this.menu.toggle
+    }
   
 }

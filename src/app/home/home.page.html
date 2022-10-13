@@ -1,58 +1,20 @@
 <ion-header [translucent]="true">
 
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button  (Click)="onClick()">
-        <ion-icon slot="start" name="menu"><app-menu-principal></app-menu-principal> </ion-icon>
-     
-      </ion-button>
-    </ion-buttons>
-    
-   
-      <ion-title>Perfil</ion-title>
+  <ion-toolbar id="menu">
+    <ion-button color="dark" slot="start" id="first"   (click)="onclick()">
 
+      <ion-icon slot="icon-only" name="menu" ></ion-icon>
+    </ion-button>
+     
+      <ion-title slot="start">Perfil</ion-title>
   </ion-toolbar>  
 </ion-header>
 
-<ion-content id="content1">
+<ion-content id="menu">
 
-<div>
-<ion-card> 
+<app-home-card></app-home-card>
 
-  <ion-card-header>
-    <ion-card-tittle>BIENVENIDO</ion-card-tittle>
-  </ion-card-header>
 
-  <ion-card-content>
-    
-   <div>
-      <ion-label> {{user.usuario}}</ion-label>
-    </div>
-    <div>
-      <ion-label>Carrera: {{data.carrera}}</ion-label> 
-    </div>
-
-  </ion-card-content>
-</ion-card>
-</div>
-
-<div>
-  <ion-item>
-    <ion-label>
-      Mis viajes
-    </ion-label>
-  </ion-item>
-<ion-card>
-  <ion-card-content>
-    <ion-item button (click)="buttonClick()">
-      <ion-label>
-        Mi viaje 1 
-      </ion-label>
-    </ion-item>
-  </ion-card-content>
-</ion-card>
-</div>
- 
 <ion-footer >
   <ion-toolbar id="Fbar">
       <ion-row>
