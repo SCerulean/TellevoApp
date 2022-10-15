@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ARcrede } from '../interfaces/viaje';
+import { Credenciales, respuestaCredenciales } from '../interfaces/viaje';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,13 @@ export class LrouteService {
 
   getCredenciales()
   {
-    return this.http.get<ARcrede>(`https://www.themealdb.com/api/json/v1/1/categories.php`);
+    return this.http.get<respuestaCredenciales>(`https://nancyb3a.github.io/Test/usuarios_PGY4121_03.json`);
   }
+
+
+  getCredenciales2()
+  {
+    return this.http.get<Credenciales>(`https://nancyb3a.github.io/Test/usuarios_PGY4121_03.json`);
+  }
+
 }

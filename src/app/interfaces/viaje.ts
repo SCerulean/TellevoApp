@@ -4,7 +4,7 @@ export interface Viaje {
 }
 
 
-export interface ARcrede{
+export interface respuestaCredenciales{
     alumnos : Credenciales[];
 }
 

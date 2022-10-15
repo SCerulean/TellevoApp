@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router, NavigationExtras} from '@angular/router';
-import { Credenciales,ARcrede } from '../interfaces/viaje';
+import { Credenciales,respuestaCredenciales } from '../interfaces/viaje';
 import { LrouteService } from '../services/lroute.service';
 
 @Component({
@@ -10,9 +10,10 @@ import { LrouteService } from '../services/lroute.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-
-  field: string = "" ;
+  login: string = 'false';
+  username: String;
+  password: String;
+  field: String = "" ;
   crede:Credenciales[]=[];
   constructor(
     private router: Router, 
@@ -22,42 +23,31 @@ export class LoginPage implements OnInit {
     ngOnInit(){
       this.gjson.getCredenciales().subscribe(resp=>
         {
-          console.log('crede',resp.alumnos);
-          this.crede = resp.alumnos
-          console.log(this.crede)
          
+          this.crede = resp.alumnos
+          return this.crede
+
+               
         });
+
+        
     }
 
 
     
   ingresar() {
+      for(let i in this.crede){
+        if(this.username==this.crede[i].username && this.password==this.crede[i].password){
+          this.login = 'true'
+          localStorage.setItem('nombre',this.crede[i].nombre.toString())
+          localStorage.setItem('Token',this.login)
+          this.router.navigate(['/home']);  
+      }
+      }
+  }
+
+
   
-
-    console.log(this.crede)
-
-  }
-
-  /*
-  ingresar() {
-    if (this.validateModel(this.user)) {
-      this.presentToast("Bienvenido  "+this.user.usuario, 3000)
-      // declaracion de instacia y envio al home
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.user 
-        }
-      };
-      this.router.navigate(['/home'], navigationExtras); 
-    }else{
-      this.presentToast("Falta: "+this.field);
-      
-    }
-
-  }
-  */
-
-
   Restablecer(){
     this.router.navigate(['/restablecer']);
     
@@ -80,6 +70,10 @@ export class LoginPage implements OnInit {
       duration: duration ? duration : 2000 
     });
     toast.present();
+  }
+
+  ngOnDestroy(){
+    console.log("destroying child...")
   }
 
 }

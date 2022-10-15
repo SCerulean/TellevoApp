@@ -9,11 +9,14 @@ import { Viaje } from 'src/app/interfaces/viaje';
   styleUrls: ['./home-card.component.scss'],
 })
 export class HomeCardComponent implements OnInit {
-
+  nombre: String;
+  
 
   constructor(private alertController: AlertController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.nombre = localStorage.getItem('nombre');
+  }
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -47,6 +50,8 @@ export class HomeCardComponent implements OnInit {
 
     await alert.present();
   }
+
+  
 
   
 
