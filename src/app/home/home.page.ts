@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { AnimationController  } from '@ionic/angular';
+import { BDviajeService } from '../services/bdviaje.service';
 
 @Component({
   selector: 'app-home', 
@@ -16,13 +17,19 @@ export class HomePage {
   data: any={
     nombre: "unknown",
     carrera:"Ingenieria en informatica",
+    
+    
+
+    
   }; 
+  nombre : string ;
+    fono : string;
   
   @ViewChild('squareA', { read: ElementRef, static: true }) squareA: ElementRef;
   @ViewChild('labelFooter', { read: ElementRef, static: true }) labelFooter: ElementRef;
   @ViewChild('buttonS', { read: ElementRef, static: true }) buttonS: ElementRef;
 
-  constructor(private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menu:MenuController, private animationCtr: AnimationController) {
+  constructor(public bdviaje : BDviajeService, private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menu:MenuController, private animationCtr: AnimationController) {
    
     this.activeroute.queryParams.subscribe(params => { 
       if (this.router.getCurrentNavigation().extras.state) { 
@@ -69,5 +76,10 @@ export class HomePage {
     async onclick(){
       this.menu.toggle
     }
+
+    guardar(){
+      this.bdviaje.guardarContacto(this.nombre,this.fono);
+    }
+  }
   
-}
+

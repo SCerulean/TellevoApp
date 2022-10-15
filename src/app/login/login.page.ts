@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router, NavigationExtras} from '@angular/router';
+import { Credenciales,ARcrede } from '../interfaces/viaje';
+import { LrouteService } from '../services/lroute.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,34 @@ import { Router, NavigationExtras} from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  user = {
-    usuario: "",
-    password: ""
-  }
+
   field: string = "" ;
+  crede:Credenciales[]=[];
+  constructor(
+    private router: Router, 
+    public toastController: ToastController, 
+    private gjson : LrouteService) { } 
 
-  constructor(private router: Router, public toastController: ToastController) { } 
+    ngOnInit(){
+      this.gjson.getCredenciales().subscribe(resp=>
+        {
+          console.log('crede',resp.alumnos);
+          this.crede = resp.alumnos
+          console.log(this.crede)
+         
+        });
+    }
 
-  ngOnInit() {
+
+    
+  ingresar() {
+  
+
+    console.log(this.crede)
+
   }
 
+  /*
   ingresar() {
     if (this.validateModel(this.user)) {
       this.presentToast("Bienvenido  "+this.user.usuario, 3000)
@@ -36,6 +55,8 @@ export class LoginPage implements OnInit {
     }
 
   }
+  */
+
 
   Restablecer(){
     this.router.navigate(['/restablecer']);
