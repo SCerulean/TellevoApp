@@ -16,6 +16,7 @@ const routes: Routes = [
 
       path: 'busqueda',loadChildren: () => import('../busqueda/busqueda.module').then( m => m.BusquedaPageModule),canActivate:[AuthGuard]
     }, 
+  
     {
       path: '',
       redirectTo: '/tabs/home',

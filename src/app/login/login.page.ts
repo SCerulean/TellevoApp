@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Router, NavigationExtras} from '@angular/router';
-import { Credenciales,respuestaCredenciales } from '../interfaces/viaje';
+import { Router} from '@angular/router';
+import { Credenciales } from '../interfaces/viaje';
 import { LrouteService } from '../services/lroute.service';
 
 @Component({
@@ -38,7 +38,6 @@ export class LoginPage implements OnInit{
           this.login = 'true'
           localStorage.setItem('nombre',this.crede[i].nombre.toString())
           localStorage.setItem('Token',this.login)
-          console.log(this.login)
           this.router.navigate(['/tabs']);
           break  
          

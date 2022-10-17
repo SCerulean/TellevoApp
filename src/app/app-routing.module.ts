@@ -23,8 +23,10 @@ const routes: Routes = [
   },
   {
     path: 'nuevo-viaje',
-    loadChildren: () => import('./nuevo-viaje/nuevo-viaje.module').then( m => m.NuevoViajePageModule)
+    loadChildren: () => import('./nuevo-viaje/nuevo-viaje.module').then( m => m.NuevoViajePageModule),canActivate:[AuthGuard]
   },
+ 
+
 
  
 

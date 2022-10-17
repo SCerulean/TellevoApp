@@ -10,7 +10,7 @@ import { Viaje } from '../clases/viaje';
 export class dbsqlservice {
 
   public database: SQLiteObject;
-  tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(100) NOT NULL, destino VARCHAR(100) NOT NULL,capacidad INTERGER);";
+  tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(100) NOT NULL, destino VARCHAR(100) NOT NULL,capacidad INTERGER NOT NULL);";
   //registro:string = "INSERT or IGNORE INTO noticia(id, titulo,texto) VALUES (1,'Titulo de la noticia','texto de la noticia');";
   listaViajes = new BehaviorSubject([]);
   private isDbReady:
@@ -27,22 +27,20 @@ export class dbsqlservice {
         name: 'viajes.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        this.database = db;
-        this.presentToast("BD creada");
-        //llamo a crear la(s) tabla(s)
+        this.database= db;
         this.crearTablas();
       }).catch(e => this.presentToast(e));
     })
   }
+
   async crearTablas() {
     try {
       await this.database.executeSql(this.tblViajes,[]);
       //await this.database.executeSql(this.registro,[]);
-      this.presentToast("Tabla creada");
       this.cargarNoticias();
       this.isDbReady.next(true); 
     } catch (error) {
-      this.presentToast("Error en Crear Tabla: "+error);
+      
     }
   }
   cargarNoticias() {

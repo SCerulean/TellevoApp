@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { dbsqlservice } from '../services/dbsql.service';
 
 @Component({
   selector: 'app-nuevo-viaje',
@@ -7,8 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoViajePage implements OnInit {
 
-  constructor() { }
+  conductor = localStorage.getItem('nombre')
+  capacidad: string;
+  destino: string;
+  constructor(private dbservice:dbsqlservice,private router:Router) { }
 
+  guardar() {
+    this.dbservice.addNoticia(this.conductor,this.destino,this.capacidad);
+    this.dbservice.presentToast("Noticia Agregada");
+    this.router.navigate(['/tabs']);
+  }
+mapa(){
+  this.router.navigate(['/mapa']);
+}
   ngOnInit() {
   }
 
