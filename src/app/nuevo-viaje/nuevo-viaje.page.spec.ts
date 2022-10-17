@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { VformComponent } from './vform.component';
+import { NuevoViajePage } from './nuevo-viaje.page';
 
-describe('VformComponent', () => {
-  let component: VformComponent;
-  let fixture: ComponentFixture<VformComponent>;
+describe('NuevoViajePage', () => {
+  let component: NuevoViajePage;
+  let fixture: ComponentFixture<NuevoViajePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VformComponent ],
+      declarations: [ NuevoViajePage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(VformComponent);
+    fixture = TestBed.createComponent(NuevoViajePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

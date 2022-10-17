@@ -3,13 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthService } from './auth/auth.service'
 import { AuthGuard } from './auth/auth.guard'
 
+
 const routes: Routes = [
-  {
-    path: 'home',loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),canActivate:[AuthGuard]
-  },
+ 
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'tabs',
     pathMatch: 'full'
   },
   {
@@ -18,6 +17,19 @@ const routes: Routes = [
   {
     path: 'restablecer',loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),canActivate:[AuthGuard]
+  },
+  {
+    path: 'nuevo-viaje',
+    loadChildren: () => import('./nuevo-viaje/nuevo-viaje.module').then( m => m.NuevoViajePageModule)
+  },
+
+ 
+
+
+
 
 
 ];

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>nuevoViaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Crea un viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      
+      <ion-label position="floating">Destino</ion-label>
+      <ion-input type="text" [(ngModel)]="nombre" minlength="3" maxlength="8"></ion-input>
+      <ion-label position="floating">Capacidad</ion-label>
+      <ion-input type="text" [(ngModel)]="fono" minlength="3" maxlength="8"></ion-input>
+  
+    </ion-card-content>
+    <ion-button  fill="clear" (click)="presentAlert()">Iniciar</ion-button>
+   
+  </ion-card>
+</ion-content>

@@ -1,9 +1,12 @@
 import { Component, ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { AnimationController  } from '@ionic/angular';
+import { Viaje } from '../clases/viaje';
 import { BDviajeService } from '../services/bdviaje.service';
+import { dbsqlservice } from '../services/dbsql.service';
 
 @Component({
   selector: 'app-home', 
@@ -13,54 +16,39 @@ import { BDviajeService } from '../services/bdviaje.service';
 
 
 export class HomePage {
-  user:any;
-  data: any={
-    nombre: "unknown",
-    carrera:"Ingenieria en informatica",
-    
-    
-
-    
-  }; 
   nombre : string ;
     fono : string;
-  
-  @ViewChild('squareA', { read: ElementRef, static: true }) squareA: ElementRef;
-  @ViewChild('labelFooter', { read: ElementRef, static: true }) labelFooter: ElementRef;
-  @ViewChild('buttonS', { read: ElementRef, static: true }) buttonS: ElementRef;
+    viajes: Viaje[];
+  constructor(public bdviaje : BDviajeService, 
+    private activeroute: ActivatedRoute, 
+    private router: Router,
+    public alertController:AlertController,
+    private menu:MenuController, 
+    private animationCtr: AnimationController,
+    private servicioBD:dbsqlservice) { }
 
-  constructor(public bdviaje : BDviajeService, private activeroute: ActivatedRoute, private router: Router, public alertController:AlertController,private menu:MenuController, private animationCtr: AnimationController) {
-   
-    this.activeroute.queryParams.subscribe(params => { 
-      if (this.router.getCurrentNavigation().extras.state) { 
-        this.user = this.router.getCurrentNavigation().extras.state.user; 
-        console.log(this.data) 
-      } 
-    });
-  }
-
-  ngAfterViewInit() {
-    const squareA = this.animationCtr.create()
-    .addElement(this.squareA.nativeElement)
-    .addElement(this.labelFooter.nativeElement)
-    .addElement(this.buttonS.nativeElement)
-    .duration(5000)
-    .keyframes([
-      { offset: 0, transform: 'scale(1))', opacity: '0.5' },
-      { offset: 0.5, transform: 'scale(0.8)', opacity: '1' },
-      { offset: 1, transform: 'scale(1)', opacity: '0.5' }
-  ]);
-      
-      const miAnimacion =  this.animationCtr.create()
-      .duration(4000)
-      .iterations(Infinity)
-      .addAnimation([squareA]); 
-    
-      miAnimacion.play()
-
-
-
+    ngOnInit(){
+      this.servicioBD.dbState().subscribe((res)=>{
+        if(res){
+          this.servicioBD.fetchNoticias().subscribe(item=>{
+            this.viajes=item;
+          })
+        }
+      })
     }
+
+    getItem($event) {
+      const valor = $event.target.value;
+      console.log('valor del control: ' + valor);
+      this.servicioBD.presentToast(valor);
+  
+    }
+
+    
+  eliminar(item) {
+    this.servicioBD.deleteNoticia(item.id);
+    this.servicioBD.presentToast("Noticia Eliminada");
+  }
 
     async onclicka() {
       const alert = await this.alertController.create({
@@ -77,8 +65,14 @@ export class HomePage {
       this.menu.toggle
     }
 
-    guardar(){
-      this.bdviaje.guardarContacto(this.nombre,this.fono);
+
+
+    cerrarSesion(){
+    
+      localStorage.removeItem('nombre')
+      localStorage.removeItem('Token')
+      this.router.navigate(['/login']);
+
     }
   }
   

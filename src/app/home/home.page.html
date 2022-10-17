@@ -1,53 +1,14 @@
 <ion-header [translucent]="true">
 
   <ion-toolbar id="menu">
-    <ion-button color="dark" slot="start" id="first"   (click)="onclick()">
-
-      <ion-icon slot="icon-only" name="menu" ></ion-icon>
-    </ion-button>
-     
+    
       <ion-title slot="start">Perfil</ion-title>
   </ion-toolbar>  
 </ion-header>
 
 <ion-content id="menu">
-  <app-home-card></app-home-card>
+  <app-home-card></app-home-card> 
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Crea un viaje</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="nombre" minlength="3" maxlength="8"></ion-input>
-      <ion-input type="text" [(ngModel)]="fono" minlength="3" maxlength="8"></ion-input>
-  
-    </ion-card-content>
-    <ion-button  fill="clear" (click)="presentAlert()">Iniciar</ion-button>
-    <ion-button  fill="clear" (click)="guardar()">guardar</ion-button>
-  </ion-card>
-
-
-
-
-
-
-
-<ion-footer >
-  <ion-toolbar id="Fbar">
-      <ion-row>
-        <ion-col>
-          <div>
-            <ion-label id="labelFooter" #labelFooter> Buscar viajes</ion-label>
-          <ion-button class="square" #squareA id="Bsearch">
-            <ion-icon name="search-outline" id="buttonS" #buttonS></ion-icon>
-          </ion-button>
-          </div>
-          
-        </ion-col>
-      </ion-row>
-  </ion-toolbar>
-</ion-footer>
+  <ion-button  fill="clear" (click)="cerrarSesion()">guardar</ion-button>
 
 </ion-content>
