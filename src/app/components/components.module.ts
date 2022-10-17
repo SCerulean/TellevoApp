@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeCardComponent } from './home-card/home-card.component';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -8,8 +9,8 @@ import { HomeCardComponent } from './home-card/home-card.component';
 
 
 @NgModule({
-  declarations: [HomeCardComponent],
-  exports: [HomeCardComponent],
+  declarations: [HomeCardComponent,CardComponent],
+  exports: [HomeCardComponent,CardComponent],
   imports: [
     CommonModule
   ]

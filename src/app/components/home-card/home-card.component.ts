@@ -21,7 +21,7 @@ export class HomeCardComponent implements OnInit {
     this.nombre = localStorage.getItem('nombre');
     this.servicioBD.dbState().subscribe((res)=>{
       if(res){
-        this.servicioBD.fetchNoticias().subscribe(item=>{
+        this.servicioBD.fechtViaje().subscribe(item=>{
           this.viajes=item;
         })
       }
@@ -42,7 +42,7 @@ export class HomeCardComponent implements OnInit {
 
   
 eliminar(item) {
-  this.servicioBD.deleteNoticia(item.id);
+  this.servicioBD.deleteViaje(item.id);
   this.servicioBD.presentToast("viaje eliminado");
 }
   

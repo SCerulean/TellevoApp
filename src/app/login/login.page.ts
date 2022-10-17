@@ -14,42 +14,21 @@ export class LoginPage implements OnInit{
   username: String;
   password: String;
   field: String = "" ;
-  crede:Credenciales[]=[];
+
   constructor(
     private router: Router, 
     public toastController: ToastController, 
     private gjson : LrouteService) { } 
 
     ngOnInit(){  
-      this.gjson.getCredenciales().subscribe(resp=>
-        {
-          this.crede = resp.alumnos
-          return this.crede     
-        });
+      
         
     }
 
   
- 
-  ingresar() {
-    
-      for(let i in this.crede){
-        if(this.username==this.crede[i].username && this.password==this.crede[i].password){
-          this.login = 'true'
-          localStorage.setItem('nombre',this.crede[i].nombre.toString())
-          localStorage.setItem('Token',this.login)
-          this.router.navigate(['/tabs']);
-          break  
-         
-      }
-      }if(this.login=='false'){
-        
-        this.presentToast('Usuario o Contraseña incorrecta',500)
-   
-        
-      }
-      
-  }
+ ingresar(){
+  this.gjson.ingresar(this.username,this.password,this.login)
+ }
  
 
   

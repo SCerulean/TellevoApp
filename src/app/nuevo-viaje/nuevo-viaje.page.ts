@@ -10,13 +10,13 @@ import { dbsqlservice } from '../services/dbsql.service';
 export class NuevoViajePage implements OnInit {
 
   conductor = localStorage.getItem('nombre')
-  capacidad: string;
+  capacidad: number;
   destino: string;
   constructor(private dbservice:dbsqlservice,private router:Router) { }
 
   guardar() {
-    this.dbservice.addNoticia(this.conductor,this.destino,this.capacidad);
-    this.dbservice.presentToast("Noticia Agregada");
+    this.dbservice.addViaje(this.conductor,this.destino,this.capacidad);
+    this.dbservice.presentToast("VIAJE AGREE");
     this.router.navigate(['/tabs']);
   }
 mapa(){

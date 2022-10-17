@@ -11,7 +11,6 @@ export class dbsqlservice {
 
   public database: SQLiteObject;
   tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(100) NOT NULL, destino VARCHAR(100) NOT NULL,capacidad INTERGER NOT NULL);";
-  //registro:string = "INSERT or IGNORE INTO noticia(id, titulo,texto) VALUES (1,'Titulo de la noticia','texto de la noticia');";
   listaViajes = new BehaviorSubject([]);
   private isDbReady:
     BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -36,14 +35,13 @@ export class dbsqlservice {
   async crearTablas() {
     try {
       await this.database.executeSql(this.tblViajes,[]);
-      //await this.database.executeSql(this.registro,[]);
-      this.cargarNoticias();
+      this.cargarViaje();
       this.isDbReady.next(true); 
     } catch (error) {
       
     }
   }
-  cargarNoticias() {
+  cargarViaje() {
     return this.database.executeSql('SELECT * FROM viaje',[])
     .then(res=>{
       let items:Viaje[]=[];
@@ -60,26 +58,26 @@ export class dbsqlservice {
       this.listaViajes.next(items);
     });
   }
-  addNoticia(conductor,destino,capacidad){
+  addViaje(conductor,destino,capacidad){
     let data=[conductor,destino,capacidad];
     return this.database.executeSql('INSERT INTO viaje(conductor,destino,capacidad) VALUES(?,?,?)',data)
     .then(()=>{
-      this.cargarNoticias();
+      this.cargarViaje();
     });
   }
  
   
-  deleteNoticia(id){
+  deleteViaje(id){
     return this.database.executeSql('DELETE FROM viaje WHERE id=?',[id])
     .then(()=>{
-      this.cargarNoticias();
+      this.cargarViaje();
     });
   }
   dbState(){
     return this.isDbReady.asObservable();
   }
 
-  fetchNoticias(): Observable<Viaje[]> {
+  fechtViaje(): Observable<Viaje[]> {
     return this.listaViajes.asObservable();
   }
   async presentToast(mensaje: string) {

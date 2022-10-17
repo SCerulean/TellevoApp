@@ -9,14 +9,14 @@ import { dbsqlservice } from '../services/dbsql.service';
   styleUrls: ['./busqueda.page.scss'],
 })
 export class BusquedaPage implements OnInit {
-  noticias: Viaje[];
+  viajes: Viaje[];
   constructor(private servicioBD:dbsqlservice, private router:Router) { }
 
   ngOnInit(){
     this.servicioBD.dbState().subscribe((res)=>{
       if(res){
-        this.servicioBD.fetchNoticias().subscribe(item=>{
-          this.noticias=item;
+        this.servicioBD.fechtViaje().subscribe(item=>{
+          this.viajes=item;
         })
       }
     })
