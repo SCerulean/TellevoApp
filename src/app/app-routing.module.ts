@@ -8,7 +8,7 @@ const routes: Routes = [
  
   {
     path: '',
-    redirectTo: 'tabs',
+    redirectTo: 'tabs',  //matener el tabs como base path para que al pasar el guard me redirija al tabs/home si existe un token
     pathMatch: 'full'
   },
   {
@@ -26,13 +26,6 @@ const routes: Routes = [
     loadChildren: () => import('./nuevo-viaje/nuevo-viaje.module').then( m => m.NuevoViajePageModule),canActivate:[AuthGuard]
   },
  
-
-
- 
-
-
-
-
 
 ];
 

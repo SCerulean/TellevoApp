@@ -10,19 +10,23 @@ import { dbsqlservice } from '../services/dbsql.service';
 export class NuevoViajePage implements OnInit {
 
   conductor = localStorage.getItem('nombre')
-  capacidad: number;
-  destino: string;
+  capacidad = "";
+  destino = "";
   constructor(private dbservice:dbsqlservice,private router:Router) { }
 
   guardar() {
-    this.dbservice.addViaje(this.conductor,this.destino,this.capacidad);
+    this.dbservice.addViaje(this.conductor,this.capacidad,this.destino);
     this.dbservice.presentToast("VIAJE AGREE");
     this.router.navigate(['/tabs']);
+    this.dbservice.userViajes(this.conductor)
   }
 mapa(){
   this.router.navigate(['/mapa']);
 }
   ngOnInit() {
+   
+    
   }
+
 
 }

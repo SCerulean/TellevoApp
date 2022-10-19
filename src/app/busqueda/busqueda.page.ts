@@ -15,17 +15,33 @@ export class BusquedaPage implements OnInit {
   ngOnInit(){
     this.servicioBD.dbState().subscribe((res)=>{
       if(res){
-        this.servicioBD.fechtViaje().subscribe(item=>{
+        this.servicioBD.fetchViajes().subscribe(item=>{
           this.viajes=item;
         })
       }
     })
   }
+cargar(){
+  this.servicioBD.dbState().subscribe((res)=>{
+    if(res){
+      this.servicioBD.fetchViajes().subscribe(item=>{
+        this.viajes=item;
+      })
+    }
+  })
 
+}
   getItem($event) {
     const valor = $event.target.value;
     console.log('valor del control: ' + valor);
     this.servicioBD.presentToast(valor);
 
   }
+
+
+    
+eliminar(item) {
+  this.servicioBD.deleteViaje(item.id);
+  this.servicioBD.presentToast("viaje eliminado");
+}
 }

@@ -21,7 +21,7 @@ export class HomeCardComponent implements OnInit {
     this.nombre = localStorage.getItem('nombre');
     this.servicioBD.dbState().subscribe((res)=>{
       if(res){
-        this.servicioBD.fechtViaje().subscribe(item=>{
+        this.servicioBD.fetchViajes().subscribe(item=>{
           this.viajes=item;
         })
       }
