@@ -1,18 +1,16 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-buttons>
-      
       <ion-button (click)="back()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-card>
+  <ion-card color="dark">
     <ion-card-header>
       <ion-card-title>Restablecer contraseña</ion-card-title>
     </ion-card-header>
@@ -20,14 +18,10 @@
       <ion-item lines="full">
         <ion-label position="floating">Ingresar correo</ion-label>
         <ion-input type="email"  [(ngModel)]="email.correo" maxlength="30"></ion-input>
-
-       
       </ion-item>
-   
-      
     </ion-card-content>
   </ion-card>
   <ion-item>
-    <ion-button expand="full" (click)="envioEmailRes()" >Enviar correo de Restablecimiento</ion-button>
+    <ion-button color="dark" expand="full" (click)="envioEmailRes()" >Enviar correo de Restablecimiento</ion-button>
   </ion-item>
 </ion-content>

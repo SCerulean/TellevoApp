@@ -1,36 +1,34 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark" >
     <ion-title>TellevoApp</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card id="login">
-    <ion-card-header>
-      <ion-card-title>Iniciar Sesion</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item lines="full">
-        <ion-label position="floating">Usuario</ion-label>
-        <ion-input type="text" [(ngModel)]="username" ></ion-input>
-      </ion-item>
-      <ion-item lines="full">
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password" [(ngModel)]="password"  ></ion-input>
-      </ion-item>
-      <ion-row>
-        <ion-col>
-         
-          <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
-        </ion-col>
+  <div id="divCard">
+    <ion-card color=dark id="login">
+      <ion-card-header>
+        <ion-card-title>Iniciar Sesion</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="full">
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" [(ngModel)]="username" ></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"  ></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-        <ion-col>
-        
-          <ion-button expand="full" (click)="Restablecer()">Restablecer contraseña</ion-button>
-        </ion-col>
-        
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  </div>
+
+  <div>
+        <ion-button expand="full" fill="dark" (click)="ingresar()">Ingresar</ion-button>
+        <hr>
+        <hr>
+        <ion-button expand="full" fill="dark" (click)="Restablecer()">Restablecer contraseña</ion-button>
+  </div>
   
 </ion-content>

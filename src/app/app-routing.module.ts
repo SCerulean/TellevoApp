@@ -25,6 +25,11 @@ const routes: Routes = [
     path: 'nuevo-viaje',
     loadChildren: () => import('./nuevo-viaje/nuevo-viaje.module').then( m => m.NuevoViajePageModule),canActivate:[AuthGuard]
   },
+  {
+    path: 'maps',
+    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
+  },
+
  
 
 ];

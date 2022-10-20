@@ -11,7 +11,6 @@ export class dbsqlservice {
 
   public database: SQLiteObject;
   tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(50) NOT NULL, capacidad VARCHAR(50) NOT NULL, destino VARCHAR(100) NOT NULL);";
-  //registro:string = "INSERT or IGNORE INTO noticia(id, titulo,texto) VALUES (1,'Titulo de la noticia','texto de la noticia');";
   listaViajes = new BehaviorSubject([]);
   listaViajesUser = new BehaviorSubject([]);
   private isDbReady:
@@ -29,8 +28,6 @@ export class dbsqlservice {
         location: 'default'
       }).then((db: SQLiteObject) => {
         this.database = db;
-        this.presentToast("BD creada");
-        //llamo a crear la(s) tabla(s)
         this.crearTablas();
       }).catch(e => this.presentToast(e));
     })
@@ -38,8 +35,6 @@ export class dbsqlservice {
   async crearTablas() {
     try {
       await this.database.executeSql(this.tblViajes,[]);
-      //await this.database.executeSql(this.registro,[]);
-      this.presentToast("Tabla creada");
       this.cargarViajes();
       this.isDbReady.next(true); 
     } catch (error) {

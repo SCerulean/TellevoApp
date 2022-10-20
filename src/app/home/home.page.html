@@ -1,15 +1,17 @@
 <ion-header [translucent]="true">
 
-  <ion-toolbar id="menu">
+  <ion-toolbar  color="dark">
     
       <ion-title slot="start">Perfil</ion-title>
+        <ion-button slot="end"  color="light" name="log-out-sharp" (click)="cerrarSesion()"></ion-button>
   </ion-toolbar>  
 </ion-header>
 
-<ion-content id="menu" color="dark">
+<ion-content>
   <app-home-card></app-home-card> 
 
-  <ion-button  fill="clear" (click)="cerrarSesion()">cerrar sesion</ion-button>
-
-
+  
+<div>
+<app-mapa></app-mapa>
+</div>
 </ion-content>

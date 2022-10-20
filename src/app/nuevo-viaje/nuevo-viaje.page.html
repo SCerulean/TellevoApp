@@ -1,32 +1,32 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
       <ion-title>Postear viaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding-vertical">
+  <div class="ion-padding-vertical" color="dark">
       <ion-card class="ion-text-center">
           <ion-card-title>
               <ion-label>
-                  <h1>Datos viaje</h1>
+                  <h1>Datos del viaje</h1>
               </ion-label>
           </ion-card-title>
 
           <ion-card-content>
               <ion-item>
-                  <ion-label position="floating">capacidad</ion-label>
+                  <ion-label position="floating">Capacidad</ion-label>
                   <ion-input type="number" [(ngModel)]="capacidad"></ion-input>
               </ion-item>
 
               <ion-item>
-                  <ion-label position="floating">destino</ion-label>
+                  <ion-label position="floating">Destino</ion-label>
                   <ion-input type="text" [(ngModel)]="destino"></ion-input>
               </ion-item>
           </ion-card-content>
-          <ion-button shape="block" (click)="guardar()">Guardar viaje</ion-button>
-          <ion-button shape="block" (click)="mapa()">mapa</ion-button>
       </ion-card>
+      <ion-button shape="block" fill="dark" (click)="guardar()">Postear viaje</ion-button>
+      <ion-button shape="block" fill="dark"(click)="mapa()">Mapa</ion-button>
 
   </div>
 

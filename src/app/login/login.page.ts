@@ -13,7 +13,6 @@ export class LoginPage implements OnInit{
   login: string = 'false';
   username: String;
   password: String;
-  field: String = "" ;
 
   constructor(
     private router: Router, 
@@ -36,15 +35,4 @@ export class LoginPage implements OnInit{
     this.router.navigate(['/restablecer']);
     
   }
-
-
-  async presentToast(msg: string, duration?: number) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: duration ? duration : 2000 
-    });
-    toast.present();
-  }
-
-
 }

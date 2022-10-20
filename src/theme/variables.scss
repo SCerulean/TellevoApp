@@ -74,6 +74,16 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** botones **/
+  --ion-color-new: #565d57;
+	--ion-color-new-rgb: 86,93,87;
+	--ion-color-new-contrast: #ffffff;
+	--ion-color-new-contrast-rgb: 255,255,255;
+	--ion-color-new-shade: #4c524d;
+	--ion-color-new-tint: #676d68;
+
+
 }
 
 @media (prefers-color-scheme: dark) {
