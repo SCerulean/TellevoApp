@@ -28,7 +28,11 @@ const routes: Routes = [
   {
     path: 'maps',
     loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
+  },  {
+    path: 'mapa2',
+    loadChildren: () => import('./mapa2/mapa2.module').then( m => m.Mapa2PageModule)
   },
+
 
  
 

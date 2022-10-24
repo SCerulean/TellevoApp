@@ -4,7 +4,7 @@ import { HomeCardComponent } from './home-card/home-card.component';
 import { CardComponent } from './card/card.component';
 import { IonicModule } from '@ionic/angular';
 import{ CUSTOM_ELEMENTS_SCHEMA} from '@angular/core'
-import { MapaComponent } from './mapa/mapa.component';
+
 
 
 
@@ -13,9 +13,9 @@ import { MapaComponent } from './mapa/mapa.component';
 
 
 @NgModule({
-  declarations: [HomeCardComponent,CardComponent,MapaComponent],
+  declarations: [HomeCardComponent,CardComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  exports: [HomeCardComponent,CardComponent,MapaComponent],
+  exports: [HomeCardComponent,CardComponent],
   imports: [
     CommonModule,IonicModule
   ],

@@ -51,7 +51,8 @@ export class dbsqlservice {
             id:res.rows.item(i).id,
             conductor:res.rows.item(i).conductor,
             capacidad:res.rows.item(i).texto,
-            destino:res.rows.item(i).destino
+            destino:res.rows.item(i).destino,
+        
           });          
         }
       }
@@ -97,7 +98,8 @@ export class dbsqlservice {
             id:res.rows.item(i).id,
             conductor:res.rows.item(i).conductor,
             capacidad:res.rows.item(i).texto,
-            destino:res.rows.item(i).destino
+            destino:res.rows.item(i).destino,
+     
           });          
         }
       }

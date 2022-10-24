@@ -20,23 +20,26 @@ export class LrouteService {
     this.getCredenciales().subscribe(resp=>
       {
         this.crede = resp.alumnos
-        return this.crede     
+        
+        for(let i in this.crede){
+          if(username==this.crede[i].username && password==this.crede[i].password){
+            login = 'true'
+            localStorage.setItem('nombre',this.crede[i].nombre.toString())
+            localStorage.setItem('Token',login)
+            this.router.navigate(['/tabs']);
+            break  
+           
+        }
+        }if(login=='false'){
+          
+          this.presentToast('Usuario o Contraseña incorrecta',500)
+     
+        }   
+        
+        
       });
     
-    for(let i in this.crede){
-      if(username==this.crede[i].username && password==this.crede[i].password){
-        login = 'true'
-        localStorage.setItem('nombre',this.crede[i].nombre.toString())
-        localStorage.setItem('Token',login)
-        this.router.navigate(['/tabs']);
-        break  
-       
-    }
-    }if(login=='false'){
-      
-      this.presentToast('Usuario o Contraseña incorrecta',500)
- 
-    }  
+
     
 }
 

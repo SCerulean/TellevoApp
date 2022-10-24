@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { Viaje } from '../clases/viaje';
 import { dbsqlservice } from '../services/dbsql.service';
 
@@ -22,5 +22,18 @@ export class BusquedaPage implements OnInit {
       }
     })
   }
+
+   
+ ver(item){
+  let navigationExtras: NavigationExtras = {
+    state: {
+      lng:  item.lng,
+      lat: item.lat
+       
+    }
+  };
+  this.router.navigate(['/mapa2'], navigationExtras);
+    
+}
 
 }
