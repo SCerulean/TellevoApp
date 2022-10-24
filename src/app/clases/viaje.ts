@@ -3,5 +3,7 @@ export class Viaje {
     conductor: string;
     capacidad: string;
     destino : string;
+    lng: number;
+    lat: number;
 
 }

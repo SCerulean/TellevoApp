@@ -28,7 +28,7 @@ export class BusquedaPage implements OnInit {
   let navigationExtras: NavigationExtras = {
     state: {
       lng:  item.lng,
-      lat: item.lat
+      lat : item.lat
        
     }
   };

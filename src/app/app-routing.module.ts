@@ -27,10 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'maps',
-    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
-  },  {
+    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule),canActivate:[AuthGuard]
+  },
+  {
     path: 'mapa2',
-    loadChildren: () => import('./mapa2/mapa2.module').then( m => m.Mapa2PageModule)
+    loadChildren: () => import('./mapa2/mapa2.module').then( m => m.Mapa2PageModule),canActivate:[AuthGuard]
   },
 
 

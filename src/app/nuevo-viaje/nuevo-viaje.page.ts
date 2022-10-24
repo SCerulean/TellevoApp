@@ -16,8 +16,8 @@ export class NuevoViajePage implements OnInit {
   conductor = localStorage.getItem('nombre')
   capacidad = "";
   destino = "";
-    lng :string;
-    lat:string;
+    lng :number;
+    lat:number;
 
   
  
@@ -33,7 +33,7 @@ export class NuevoViajePage implements OnInit {
   }
 
   guardar() {
-    this.dbservice.addViaje(this.conductor,this.capacidad,this.destino);
+    this.dbservice.addViaje(this.conductor,this.capacidad,this.destino,this.lng,this.lat);
     this.dbservice.presentToast("VIAJE AGREE");
     this.router.navigate(['/tabs']);
     this.dbservice.userViajes(this.conductor)

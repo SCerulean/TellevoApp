@@ -10,7 +10,7 @@ import { Viaje } from '../clases/viaje';
 export class dbsqlservice {
 
   public database: SQLiteObject;
-  tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(50) NOT NULL, capacidad VARCHAR(50) NOT NULL, destino VARCHAR(100) NOT NULL);";
+  tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(50) NOT NULL, capacidad VARCHAR(50) NOT NULL, destino VARCHAR(100) NOT NULL, lng REAL NOT NULL, lat REAL NOT NULL);";
   listaViajes = new BehaviorSubject([]);
   listaViajesUser = new BehaviorSubject([]);
   private isDbReady:
@@ -52,16 +52,17 @@ export class dbsqlservice {
             conductor:res.rows.item(i).conductor,
             capacidad:res.rows.item(i).texto,
             destino:res.rows.item(i).destino,
-        
+            lng:res.rows.item(i).lng,
+            lat:res.rows.item(i).lat
           });          
         }
       }
       this.listaViajes.next(items);
     });
   }
-  addViaje(conductor,capacidad,destino){
-    let data=[conductor,capacidad,destino];
-    return this.database.executeSql('INSERT INTO viaje(conductor,capacidad,destino) VALUES(?,?,?)',data)
+  addViaje(conductor,capacidad,destino,lng,lat){
+    let data=[conductor,capacidad,destino,lng,lat];
+    return this.database.executeSql('INSERT INTO viaje(conductor,capacidad,destino,lng,lat) VALUES(?,?,?,?,?)',data)
     .then(()=>{
       this.cargarViajes();
     });
@@ -99,6 +100,8 @@ export class dbsqlservice {
             conductor:res.rows.item(i).conductor,
             capacidad:res.rows.item(i).texto,
             destino:res.rows.item(i).destino,
+            lng:res.rows.item(i).lng,
+            lat:res.rows.item(i).lat
      
           });          
         }

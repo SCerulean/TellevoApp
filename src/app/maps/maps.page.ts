@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl'
 import { Router,NavigationExtras } from '@angular/router';
+import { read } from 'fs';
 
 
 
@@ -21,19 +22,20 @@ export class MapsPage implements OnInit {
   this.mapa = new Mapboxgl.Map({
   container: 'mapbox', // container ID
   style: 'mapbox://styles/mapbox/streets-v11', // style URL
-  center: [ -71.5353781,-33.0336892], // starting position [lng, lat]
+  center: [-71.5338682,-33.0339229], // starting position [lng, lat]
   zoom: 16, // starting zoom
   
 
 
 });
-this.crearMarker( -71.5353781,-33.0336892);
+this.crearMarker(-71.5338682,-33.0339229);
 
   }
   
 
  crearMarker(lng : number ,lat: number){
   this.Marker = new Mapboxgl.Marker({
+   
     draggable : true
   }).setLngLat([lng,lat]).addTo(this.mapa);
 

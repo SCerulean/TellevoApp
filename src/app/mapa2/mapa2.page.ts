@@ -16,7 +16,7 @@ export class Mapa2Page implements OnInit {
   viajes:Viaje[];
 
   mapa : Mapboxgl.Map
-  Marker =new Mapboxgl.Marker
+  Marker :Mapboxgl.Marker
   lng:number;
   lat:number;
 
@@ -26,6 +26,8 @@ export class Mapa2Page implements OnInit {
       if (this.router.getCurrentNavigation().extras.state) { 
         this.lng = this.router.getCurrentNavigation().extras.state.lng; 
         this.lat = this.router.getCurrentNavigation().extras.state.lat;
+        console.log(this.lng,this.lat);
+        
       }
     });
    }
@@ -43,7 +45,8 @@ export class Mapa2Page implements OnInit {
 
 });
 this.crearMarker2( this.lng,this.lat);
-this.crearMarker( -71.5353781,-33.0336892);
+this.crearMarker(-71.5338682,-33.0339229);
+
 
   }
   
@@ -56,6 +59,7 @@ this.crearMarker( -71.5353781,-33.0336892);
 
 crearMarker2(lng : number ,lat: number){
   this.Marker = new Mapboxgl.Marker({
+    color : '#FF0000',
   }).setLngLat([lng,lat]).addTo(this.mapa);
 
 }
