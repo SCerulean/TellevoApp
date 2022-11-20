@@ -1,16 +1,17 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Viaje } from 'src/app/clases/viaje';
+import { Vehiculo } from 'src/app/clases/viaje';
 import { dbsqlservice } from 'src/app/services/dbsql.service';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  selector: 'app-vehiculo',
+  templateUrl: './vehiculo.component.html',
+  styleUrls: ['./vehiculo.component.scss'],
 })
+export class VehiculoComponent implements OnInit {
+  
 
-export class CardComponent implements OnInit, OnDestroy {
-  viajes: Viaje[];
+  vehiculos: Vehiculo[];
   conductor = localStorage.getItem('nombre')
   constructor(private servicioBD:dbsqlservice,private router:Router) { }
 
@@ -18,9 +19,9 @@ export class CardComponent implements OnInit, OnDestroy {
     
     this.servicioBD.dbState().subscribe((res)=>{
       if(res){
-        this.servicioBD.userViajes(this.conductor)
-        this.servicioBD.fetchViajesUser().subscribe(item=>{
-          this.viajes=item;
+        this.servicioBD.userVehiculos(this.conductor)
+        this.servicioBD.fetchVehiculoUser().subscribe(item=>{
+          this.vehiculos=item;
         })
       }
     })
@@ -32,7 +33,7 @@ ngOnDestroy(){
 
     
 eliminar(item) {
-  this.servicioBD.deleteViaje(item.id);
+  this.servicioBD.deleteVehiculo(item.patente,item.dueno);
   this.servicioBD.presentToast("viaje eliminado");
   window.location.reload()
 }

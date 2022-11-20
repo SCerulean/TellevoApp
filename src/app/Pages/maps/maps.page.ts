@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl'
 import { Router,NavigationExtras } from '@angular/router';
-import { read } from 'fs';
+
 
 
 
@@ -28,10 +28,18 @@ export class MapsPage implements OnInit {
 
 
 });
+this.setMarker()
 this.crearMarker(-71.5338682,-33.0339229);
 
   }
   
+
+
+setMarker(){
+  this.mapa.on('click', (e) => {
+    this.Marker.setLngLat(e.lngLat)
+})}
+
 
  crearMarker(lng : number ,lat: number){
   this.Marker = new Mapboxgl.Marker({

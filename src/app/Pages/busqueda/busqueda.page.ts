@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { Viaje } from '../clases/viaje';
-import { dbsqlservice } from '../services/dbsql.service';
+import { Viaje } from '../../clases/viaje';
+import { dbsqlservice } from '../../services/dbsql.service';
 
 
 @Component({

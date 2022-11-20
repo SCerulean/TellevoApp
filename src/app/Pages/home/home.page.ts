@@ -47,6 +47,14 @@ export class HomePage {
       this.router.navigate(['/login']);
 
     }
+
+    
+    a(){
+    
+
+      this.router.navigate(['/vehiculo']);
+
+    }
   }
   
 

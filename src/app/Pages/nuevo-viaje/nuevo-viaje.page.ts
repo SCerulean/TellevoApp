@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { element } from 'protractor';
-import { dbsqlservice } from '../services/dbsql.service';
+import { dbsqlservice } from '../../services/dbsql.service';
 
 
 

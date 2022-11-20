@@ -2,8 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl'
 import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
-import { dbsqlservice } from '../services/dbsql.service';
-import { Viaje } from '../clases/viaje';
+import { dbsqlservice } from '../../services/dbsql.service';
+import { Viaje } from '../../clases/viaje';
 
 
 @Component({

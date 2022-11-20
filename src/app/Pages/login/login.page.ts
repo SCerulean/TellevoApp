@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router} from '@angular/router';
-import { Credenciales } from '../interfaces/viaje';
-import { LrouteService } from '../services/lroute.service';
+import { Credenciales } from '../../interfaces/viaje';
+import { LrouteService } from '../../services/lroute.service';
 
 @Component({
   selector: 'app-login',

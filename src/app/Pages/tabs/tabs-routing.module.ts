@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthService } from '../auth/auth.service'
-import { AuthGuard } from '../auth/auth.guard'
+import { AuthGuard } from '../../auth/auth.guard'
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -34,6 +33,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthGuard],
 })
 export class TabsPageRoutingModule {}
