@@ -11,6 +11,6 @@ describe('LrouteService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(service.ingresar('jere.zuniga','123456','false')).toBeTruthy();
   });
 });

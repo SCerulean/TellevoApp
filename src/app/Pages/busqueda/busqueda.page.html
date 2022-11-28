@@ -15,9 +15,11 @@
           <ion-label>
             <h3 style="word-wrap: break-word; white-space: normal;">Conductor:  {{n.conductor}}</h3>
             <h3 >Capacidad: {{n.capacidad}}</h3>
+            <h3 >precio: {{n.precio}}</h3>
             <h3 style="word-wrap: break-word; white-space: normal;">Destino:  {{n.destino}}</h3>
           </ion-label>
           <ion-button fill="dark" (click)="ver(n)" > ver ubicacion</ion-button>
+          <ion-button fill="dark" (click)="tomarViaje(n)" >Tomar viaje</ion-button>
         </ion-item>
     </ion-item>
   </ion-list>

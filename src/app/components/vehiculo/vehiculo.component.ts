@@ -40,7 +40,7 @@ eliminar(item) {
 
 
 crear(){
-  this.router.navigate(['/nuevo-viaje'])
+  this.router.navigate(['/vehiculo'])
  
 
 }

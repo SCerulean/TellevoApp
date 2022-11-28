@@ -4,9 +4,9 @@ export class Viaje {
     capacidad: string;
     precio: number;
     destino: string;
+    contacto: string;
     lng: number;
     lat: number;
-    vehiculo: Vehiculo;
 
 }
 export class Vehiculo{ 

@@ -13,20 +13,36 @@
               </ion-label>
           </ion-card-title>
 
+        
           <ion-card-content>
-              <ion-item>
-                  <ion-label position="floating">Capacidad</ion-label>
-                  <ion-input type="number" [(ngModel)]="capacidad"></ion-input>
-              </ion-item>
-
+            
+              <hr>
+             
               <ion-item>
                   <ion-label position="floating">Destino</ion-label>
                   <ion-input type="text" [(ngModel)]="destino"></ion-input>
               </ion-item>
+
+              <ion-item >
+                <ion-label position="floating">Precio (maximo 3500)</ion-label>
+                <ion-input type="number" id="precio" [(ngModel)]="precio" min='0' max="3500" value="0" (ionChange)="a()"></ion-input>
+            </ion-item>
+
+            <ion-item>
+            <ion-button shape="block" fill="dark"(click)="mapa()">Ubicar destino</ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-select placeholder="Seleccione Vehiculo" >
+                <ion-select-option *ngFor="let v of vehiculos" [value]="v.nombre">{{v.nombre}}</ion-select-option>
+              </ion-select>
+              <hr>
+              <ion-button type="sumbit" shape="block" fill="dark" (click)="guardar(v)">Postear viaje</ion-button>
+            </ion-item>
+            
           </ion-card-content>
       </ion-card>
-      <ion-button shape="block" fill="dark"(click)="mapa()">Mapa</ion-button>
-      <ion-button shape="block" fill="dark" (click)="guardar()">Postear viaje</ion-button>
+     
+
 
   </div>
 

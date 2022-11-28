@@ -10,7 +10,7 @@ import { Vehiculo, Viaje } from '../clases/viaje';
 export class dbsqlservice {
 
   public database: SQLiteObject;
-  tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(50) NOT NULL, capacidad INTEGER NOT NULL,precio INTEGER NOT NULL, destino VARCHAR(100) NOT NULL, lng REAL NOT NULL, lat REAL NOT NULL ); ";
+  tblViajes:string = "CREATE TABLE IF NOT EXISTS viaje(id INTEGER PRIMARY KEY autoincrement, conductor VARCHAR(50) NOT NULL, capacidad INTEGER NOT NULL,precio INTEGER NOT NULL, destino VARCHAR(100) NOT NULL,contacto VARCHAR(50) NOT NULL, lng REAL NOT NULL, lat REAL NOT NULL ); ";
   tblVehiculo:string = "CREATE TABLE IF NOT EXISTS vehiculo(patente VARCHAR(50) PRIMARY KEY,capacidad INTEGER NOT NULL,nombre VARCHAR(50),dueno VARCHAR(50) NOT NULL) ;"
   listaViajes = new BehaviorSubject([]);
   listaViajesUser = new BehaviorSubject([]);
@@ -62,6 +62,7 @@ export class dbsqlservice {
             capacidad:res.rows.item(i).capacidad,
             precio:res.rows.item(i).precio,
             destino:res.rows.item(i).destino,
+            contacto:res.rows.item(i).contacto,
             lng:res.rows.item(i).lng,
             lat:res.rows.item(i).lat,
     
@@ -73,9 +74,9 @@ export class dbsqlservice {
   }
 
 
-  addViaje(conductor,capacidad,destino,lng,lat){
-    let data=[conductor,capacidad,destino,lng,lat];
-    return this.database.executeSql('INSERT INTO viaje(conductor,capacidad,destino,lng,lat) VALUES(?,?,?,?,?)',data)
+  addViaje(conductor,capacidad,precio,destino,contacto,lng,lat){
+    let data=[conductor,capacidad,precio,destino,contacto,lng,lat];
+    return this.database.executeSql('INSERT INTO viaje(conductor,capacidad,precio,destino,contacto,lng,lat) VALUES(?,?,?,?,?,?,?)',data)
     .then(()=>{
       this.cargarViajes();
     });
@@ -113,6 +114,7 @@ export class dbsqlservice {
             capacidad:res.rows.item(i).capacidad,
             precio:res.rows.item(i).precio,
             destino:res.rows.item(i).destino,
+            contacto:res.rows.item(i).contacto,
             lng:res.rows.item(i).lng,
             lat:res.rows.item(i).lat,
         

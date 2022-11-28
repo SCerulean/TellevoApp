@@ -25,6 +25,7 @@ export class LrouteService {
           if(username==this.crede[i].username && password==this.crede[i].password){
             login = 'true'
             localStorage.setItem('nombre',this.crede[i].nombre.toString())
+            localStorage.setItem('email',this.crede[i].username.toString()+'@duocuc.cl')
             localStorage.setItem('Token',login)
             this.router.navigate(['/tabs']);
             break  

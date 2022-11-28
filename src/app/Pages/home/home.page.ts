@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
-import { AnimationController  } from '@ionic/angular';
 
 
 @Component({
@@ -18,43 +17,23 @@ export class HomePage {
  
   constructor( 
     private router: Router,
-    public alertController:AlertController,
-    private menu:MenuController, 
+    public alertController:AlertController
    ) { }
 
 
 
-    async onclicka() {
-      const alert = await this.alertController.create({
-        header: 'Alert',
-        subHeader: 'Important message',
-        message: 'This is an alert!',
-        buttons: ['OK'],
-      });
-  
-      await alert.present();
-    }
-
-    async onclick(){
-      this.menu.toggle
-    }
+    
 
 
     cerrarSesion(){
     
       localStorage.removeItem('nombre')
+      localStorage.removeItem('email')
       localStorage.removeItem('Token')
       this.router.navigate(['/login']);
 
     }
 
-    
-    a(){
-    
-
-      this.router.navigate(['/vehiculo']);
-
-    }
   }
   
 

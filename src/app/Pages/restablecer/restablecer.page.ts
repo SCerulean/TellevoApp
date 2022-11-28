@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras} from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import emailjs from '@emailjs/browser';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-restablecer',
@@ -10,9 +13,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class RestablecerPage implements OnInit {
 
-  email = {
-    correo: ""
-  }
+  email:string;
   field:string =""
   constructor( private router: Router,public ToastCrt: ToastController ,private alertCRT : AlertController) { }
 
@@ -44,7 +45,7 @@ export class RestablecerPage implements OnInit {
     return true;
   }
 
-
+/*
 
   envioEmailclic() {
     if (this.validateModel(this.email)) {
@@ -55,15 +56,41 @@ export class RestablecerPage implements OnInit {
     }
   }
 
+  
+
 
   async envioEmailRes() {
     const alert = await this.alertCRT.create({
-      message: 'Se ha enviado un correo de restablecimiento a '+this.email.correo,
+      message: 'Se ha enviado un correo de restablecimiento a '+this.email,
       buttons: ['OK'],
     });
 
     await alert.present();
+
+
   }
+*/
+async a(){
+const templateParams = {
+  name: localStorage.getItem("nombre"),
+  email: this.email
+};
+
+emailjs.send('service_qqyfx9e','template_njiwhcu', templateParams, environment.emmailkey)
+.then((response) => {
+   console.log('SUCCESS!', response.status, response.text);
+}, (err) => {
+   console.log('FAILED...', err);
+});
+
+
+const alert = await this.alertCRT.create({
+  message: 'Se ha enviado un correo de restablecimiento a '+this.email,
+  buttons: ['OK'],
+});
+
+await alert.present();
+}
 
 
   
