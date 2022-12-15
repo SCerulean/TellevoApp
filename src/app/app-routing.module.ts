@@ -32,9 +32,14 @@ const routes: Routes = [
   {
     path: 'mapa2',
     loadChildren: () => import('./Pages/mapa2/mapa2.module').then( m => m.Mapa2PageModule),canActivate:[AuthGuard]
-  },  {
+  },
+  {
     path: 'vehiculo',
     loadChildren: () => import('./Pages/vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
+  },
+  {
+    path: 'detection',
+    loadChildren: () => import('./Pages/detection/detection.module').then( m => m.DetectionPageModule)
   },
 
 
